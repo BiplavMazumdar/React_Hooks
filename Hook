@@ -1,0 +1,58 @@
+useEffect();
+
+The Effect Hook lets you perform side effects in function components:
+
+side effect   function <Component />
+
+# React is centered around functional programming.
+
+side effect  = any execution that affects something outside the scope of the function being executed.
+
+Global variables = variables that are accessible globally, or everywhere throughout the program.
+Once declared, they remain in memory throughout the runtime of the program.
+
+to create a global variable 
+Create a file named "config.js" in ./src folder with this content:
+module.exports = global.config = {
+    i18n: {
+        welcome: {
+            en: "Welcome",
+        }
+    }
+};
+
+Some examples of side effects in React components are:
+
+Making asynchronous API calls for data
+Setting a subscription to an observable
+Manually updating the DOM element
+Updating global variables from inside a function
+
+There are two common kinds of side effects in React components: those that don’t require cleanup, and those that do. Let’s look at this distinction in more detail.
+
+Effects Without Cleanup
+
+Sometimes, we want to run some additional code after React has updated the DOM.
+
+What does useEffect do? 
+
+By using this Hook, you tell React that your component needs to do something after render. 
+
+React will remember the function you passed and call it later after performing the DOM updates
+
+
+Why is useEffect called inside a component?
+
+Does useEffect run after every render
+
+Yes! By default, it runs both after the first render and after every update. 
+
+Effects with Cleanup
+------------------------------------
+  
+
+
+
+
+
+
