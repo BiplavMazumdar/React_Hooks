@@ -1,0 +1,43 @@
+useRouter
+
+It is use for the navigate to the next page onClick it is in the button
+
+import { useRouter } from 'next/router';
+import React, { useState,useEffect } from 'react'
+import Link from 'next/link'
+
+const Route = () => {
+  const route = useRouter();
+  const [count,setCount] = useState(0);
+  const [name,setName] = useState();
+  const [names,setNames] = useState();
+
+  if(count>2){
+    route.push('/about');
+  }
+
+  function m1(e){
+    setName(e.target.value);
+  }
+  
+
+  return (
+    <div>
+        <h1>hello</h1>
+        <button onClick={()=>route.push('/about')}></button>
+        <button onClick={() => setCount(count + 1)}>Increase count</button>
+        <h1>{count}</h1>
+        {/* <Link href="/about"></Link> */}
+        <button type="button" onClick={() => route.replace('/User')}>
+          <input type="text" onChange={m1}/>
+          {/* <button onClick={m1}>click</button> */}
+          
+          <h1>{names}</h1>
+      Click me
+    </button>
+    </div>
+  )
+}
+
+export default Route;
+
