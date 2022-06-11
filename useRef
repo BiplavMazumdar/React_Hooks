@@ -1,0 +1,33 @@
+useRef is used to update the referance without rerendering and it give one mutable object  of .current
+Does Not Cause Re-renders
+
+The useRef Hook allows you to persist values between renders.
+
+It can be used to store a mutable value that does not cause a re-render when updated.
+
+It can be used to access a DOM element directly.
+
+useRef() only returns one item. It returns an Object called current.
+
+
+    import React from 'react'
+    import { useRef } from 'react'
+    
+    const Eff = () => {
+        const inputone = useRef();
+
+
+        const InputRef = () =>{
+            console.log(inputone.current);
+            inputone.current.style.width="100px"
+        }
+        
+      return (
+        <div>
+            <input ref={inputone} type="text" value={count} onChange={(e)=>{setCount(e.target.value)}}/>
+        <button onClick={InputRef}>click</button>
+        </div>
+      )
+    }
+    
+    export default Eff
