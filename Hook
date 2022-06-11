@@ -2,6 +2,12 @@ useEffect();
 
 The Effect Hook lets you perform side effects in function components:
 
+It’s a hook that lets do side effects inside function components.
+It takes a function as a first argument, and an array of dependencies as the second:
+useEffect(fn, [deps])
+
+It is being called in the render, which looks like this:
+
 side effect   function <Component />
 
 # React is centered around functional programming.
