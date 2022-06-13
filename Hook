@@ -57,6 +57,41 @@ Effects with Cleanup
 ------------------------------------
   
 
+effects run after every completed render, but you can choose to fire them only when certain values have changed. 
+This hook uses an array of "dependencies": variables or states that useEffect listen to for changes. 
+When their values change, the main body of the useEffect hook is executed.
+
+The return statement of this hook is used to clean methods that are already running, such as timers.
+
+There is an interesting behaviour with this hook when we use non-primitive JavaScript data types as dependencies (e.g., arrays, objects, functions). 
+With primitive values, such as numbers and strings, we can define a variable from another variable, and they will be the same:
+
+const a = 1
+const b = 1
+a === b
+// Output: true
+
+But with non-primitive values, such as objects, this behaviour is not the same:
+{} === {}
+// Output: false
+
+So we need to be very careful when using objects as dependencies, because even though they may look like unaltered data, they may not be so. 
+Instead of using objects, we may want to use their properties as dependencies:
+
+
+useEffect(() => {
+        // Some code that uses the properties
+    }, [myObject.property1, myObject.property2]);
+    
+    
+useEffect use cases
+Running once on mount: fetch API data
+Running on state change: validating input field
+Running on state change: live filtering
+Running on state change: trigger animation on new array value
+Running on props change: update paragraph list on fetched API data update
+Running on props change: updating fetched API data to get BTC updated price
+
 
 
 
