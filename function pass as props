@@ -1,0 +1,26 @@
+we can pass function as props 
+
+import {useState} from 'react';
+
+function Child({handleClick}) {
+  return <button onClick={handleClick}>Increment</button>;
+}
+
+export default function App() {
+  const [count, setCount] = useState(0);
+
+  function handleClick() {
+    setCount(count + 1);
+  }
+
+  return (
+    <div>
+      <h2>Count is: {count}</h2>
+
+      <Child handleClick={handleClick} />
+    </div>
+  );
+}
+
+We passed a parameter to the handleClick function when passing it as a prop to the Child component.
+However, note that we are still passing a function as a prop, and not the result of calling one.
