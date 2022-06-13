@@ -1,5 +1,85 @@
 Keys In React
 
+A “key” is a special string attribute you need to include when creating lists of elements in React.
+
+Why is there a key in React?
+The main purpose of keys is to help React differentiate and distinguish elements from each other, 
+increasing its performance when diffing between the virtual and real DOM.
+
+When working with any type of list in React, you will often encounter this warning if you forgot to include a key prop:
+Warning: Each child in a list should have a unique "key" prop
+
+Diffing Algorithm: A Brief Explanation
+
+A React app is made up of a tree of components. Whenever there’s a prop or state change in any component, React re-renders its components into its virtual DOM.
+The diffing algorithm compares the new virtual DOM with the old DOM at each level of the component tree, starting from the root node.
+
+What About Lists?
+
+// virtual DOM
+<ul>
+  <li>first</li>
+  <li>second</li>
+  <li>third</li>
+</ul>
+// real DOM
+<ul>
+  <li>first</li>
+  <li>second</li>
+</ul>
+
+In this case, this results in the <li>third</li> being added after <li>second</li>.
+
+So far, so good. But now, instead of adding an element at the bottom of the list, what if we add a new element at the beginning?
+
+// virtual DOM
+<ul>
+  <li>zero</li>
+  <li>first</li>
+  <li>second</li>
+</ul>
+// real DOM
+<ul>
+  <li>first</li>
+  <li>second</li>
+</ul>
+
+
+This example will result in React re-rendering every single <li> to the real DOM because it doesn't realize that 
+it can simply add <li>zero</li> to the beginning of the list.
+
+This inefficiency can cause problems, especially in larger apps. Hence, keys provide a simple solution to this issue.
+
+The Right Way to Use Keys: id
+You can easily add keys to list elements like so:
+
+<li key="1">first</li>
+<li key="2">second</li>
+<li key="3">third</li>
+
+Keys should be a unique identifier so that each element can be identified properly. Therefore, it is recommended to use some uniquely generated id as the key. 
+You can even assign keys to a dynamically rendered list:
+
+const todoItems = todos.map((todo) =>
+  <li key={todo.id}>
+    {todo.text}
+  </li>
+);
+
+The main purpose of keys is to help React differentiate and distinguish elements from each other, 
+increasing its performance when diffing between the virtual and real DOM. 
+
+
+
+
+
+
+
+For lists, React will recurse on both their children simultaneously, find any differences, then patch them to the real DOM if there are any.
+
+
+keys are used to give an identity to the elements in the lists.
+
 Keys help React identify which items have changed, are added, or are removed.
 
 Keys should be given to the elements inside the array to give the elements a stable identity:
