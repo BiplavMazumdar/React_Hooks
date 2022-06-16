@@ -1,0 +1,81 @@
+Important Topics React (javaScript)
+
+* we can use  map function whenever we get array of objects [{}]
+
+we can use map ka under map function when we get this type of data [{name:[{}]}]
+
+const arr = [
+  {
+    country: [
+      { id: 0, city: "Ind" },
+      { id: 1, city: "RU" },
+    ],
+  },
+  { country: [{ id: 0, city: "USA" }, { id: 1, city: "U" }] },
+  { country: [{  id: 0, city: "EU" }, {  id: 1, city: "USSR" }] },
+];
+
+{arr.map((item) => (
+        <div>
+          {item.country.map((y) => (
+            <p>{y.city}</p>
+          ))}
+          <h1>{item.country[0].city}</h1>
+        </div>
+      ))}
+
+
+* () this bracket  is use for the return statement 
+
+* SSR server side rendering  this is the advantage in Next.JS over React
+
+* In react go to the page and click on viewSource code there you will get one bundel file which is send by the server 
+where as in next.js you will directly get the html part no bundel file is there directly send by the server 
+
+
+* In React on button click redirect to another project 
+
+onClick={event =>  window.location.href='/your-href'}
+
+check thie = https://stackoverflow.com/questions/50644976/react-button-onclick-redirect-page
+
+import { useNavigate } from "react-router-dom";
+
+  let navigate = useNavigate(); 
+  const routeChange = () =>{ 
+    let path = `newPath`; 
+    navigate(path);
+  }
+
+<Button color="primary" className="px-4"
+            onClick={routeChange}
+              >
+
+* Diffrence between Fat arrow function (Arrow function) over normal function
+
+1. Syntax
+2. Arguments binding
+Arrow functions do not have an arguments binding. 
+However, they have access to the arguments object of the closest non-arrow parent function.
+
+3. Use of this keyword
+Unlike regular functions, arrow functions do not have their own this
+The value of this inside an arrow function remains the same throughout the lifecycle of the function and is always 
+bound to the value of this in the closest non-arrow parent function.
+
+4. Using new keyword
+Regular functions created using function declarations or expressions are constructible and callable. 
+Since regular functions are constructible, they can be called using the new keyword.
+
+However, the arrow functions are only callable and not constructible, i.e arrow functions can never be used as constructor functions. 
+Hence, they can never be invoked with the new keyword.
+
+5. No duplicate named parameters
+Arrow functions can never have duplicate named parameters, whether in strict or non-strict mode.
+It means that the following is valid JavaScript:
+
+
+
+
+
+
