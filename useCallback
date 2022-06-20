@@ -16,3 +16,8 @@ One reason to use useCallback is to prevent a component from re-rendering unless
 
 In this example, you might think that the Todos component will not re-render unless the todos change:
 
+What is useCallback used for?
+
+The useCallback hook is used  when you have a component in which the child is rerendering again and again without need.
+Pass an inline callback and an array of dependencies. 
+useCallback will return a memoized version of the callback that only changes if one of the dependencies has changed.
