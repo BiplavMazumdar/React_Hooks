@@ -76,6 +76,28 @@ It means that the following is valid JavaScript:
 
 
 
+* const funcount = new Set();
+
+New keyword in JavaScript is used to create an instance of an object that has a constructor function.
+On calling the constructor function with ‘new’ operator, the following actions are taken:
+
+A new empty object is created.
+
+* Set
+The Set object lets you store unique values of any type, whether primitive values or object references.
+Set objects are collections of values. You can iterate through the elements of a set in insertion order.
+A value in the Set may only occur once; it is unique in the Set's collection.
+
+Constructor
+Set()
+Creates a new Set object.
+
+Using the Set object
+mySet1.add(1)           // Set [ 1 ]
+mySet1.add(5)           // Set [ 1, 5 ]
+
+console.log(mySet1.size)   // to check the size of the set array
+
 
 
 
