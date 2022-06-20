@@ -1,0 +1,27 @@
+What is Context API?
+
+The React Context API is a way for a React app to effectively produce global variables that can be passed around. 
+This is the alternative to "prop drilling" or moving props from grandparent to child to parent, and so on.
+
+React.createContext() is all you need. It returns a consumer and a provider. 
+Provider is a component that as it's names suggests provides the state to its children.
+It will hold the "store" and be the parent of all the components that might need that store.
+Consumer as it so happens is a component that consumes and uses the state.
+
+Context API will replace redux?
+Redux is great and came perfectly to answer the need for state management.
+
+When using redux people tend to manage almost all of their state in redux and it causes 2 problems:
+
+1.Overhead - Why should I create/update 3 files just to add one tiny feature?
+
+2.One of the significant advantages of React's one-way data binding is that it's easy to understand - A component passes state to its children. 
+Using Redux takes it away from us.
+
+Using Context API we can define several unrelated contexts (stores) and use each in its proper place in the app.
+
+How to use Context API?
+
+Create a folder under your app root named contexts (not required. just a convention)
+Create a file named <your context name>Context.js, e.g. userContext.js
+import and create a context like so:
