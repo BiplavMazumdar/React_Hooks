@@ -21,3 +21,105 @@ What is useCallback used for?
 The useCallback hook is used  when you have a component in which the child is rerendering again and again without need.
 Pass an inline callback and an array of dependencies. 
 useCallback will return a memoized version of the callback that only changes if one of the dependencies has changed.
+
+Without useCallback Hook:
+
+The problem is that once the counter is updated, all three functions are recreated again. 
+The alert increases by three at a time but if we update some states all the functions related to that states should only re-instantiated.
+
+import React, { useEffect, useState } from "react";
+
+const funcount = new Set();
+
+const Callback2 = () => {
+  const [count, setCount] = useState(0);
+  const [number, setNumber] = useState(0);
+
+  const incrementcount = () => {
+    setCount(count + 1);
+  };
+
+  const decrementcount = () => {
+    setCount(count - 1);
+  };
+
+  const incrementnumber = () => {
+    setNumber(number + 1);
+  };
+
+  funcount.add(incrementcount);
+  funcount.add(decrementcount);
+  funcount.add(incrementnumber);
+
+  useEffect(() => {
+    alert(funcount.size);
+  });
+
+  return (
+    <div>
+      <h1>Count : {count}</h1>
+      <button onClick={incrementcount}>increment Count</button>
+
+      <button onClick={decrementcount}>Decrement Count</button>
+
+      <button onClick={incrementnumber}>increment number</button>
+    </div>
+  );
+};
+
+output :- In this output all the count and number when click it will increse the count 3 times 
+
+export default Callback2;
+
+/////////////////////////////////////
+
+With useCallback hook: 
+To solve this problem we can use the useCallback hook. 
+
+import React, { useCallback, useEffect, useState } from "react";
+
+const funcount = new Set();
+
+const Callback2 = () => {
+  const [count, setCount] = useState(0);
+  const [number, setNumber] = useState(0);
+
+  const incrementcount = useCallback(() => {
+    setCount(count + 1);
+  }, [count]);
+
+  const decrementcount = useCallback(() => {
+    setCount(count - 1);
+  }, [count]);
+
+  const incrementnumber = useCallback(() => {
+    setNumber(number + 1);
+  }, [number]);
+
+  funcount.add(incrementcount);
+  funcount.add(decrementcount);
+  funcount.add(incrementnumber);
+
+  useEffect(() => {
+    alert(funcount.size);
+  });
+
+  return (
+    <div>
+      <h1>Count : {count}</h1>
+      <button onClick={incrementcount}>increment Count</button>
+
+      <button onClick={decrementcount}>Decrement Count</button>
+
+      <button onClick={incrementnumber}>increment number</button>
+    </div>
+  );
+};
+
+export default Callback2;
+
+Output: As we can see from the below output when we change the state ‘count’ then two functions will re-instantiated so the set size will increase by 
+2 and when we update the state ‘number’ then only one function will re-instantiated and the size of the set will increase by only one.
+
+
+
