@@ -1,0 +1,10 @@
+API Intregation
+
+Web APIs
+
+RapidAPI is a platform for accessing web-based APIs.
+
+The most popular type of web API is a Representational state transfer API or RESTful API for short. 
+To be brief, it follows an architecture that uses predefined and stateless operations to access web resources.
+
+Using web APIs requires the use of HTTP requests. Different types of requests include GET, POST, DELETE, PATCH, etc
