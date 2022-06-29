@@ -14,3 +14,18 @@ useDispatch hook
 The useDispatch hook lets us efficiently dispatch actions while the useSelector hook gives us access to the global state anywhere in the application. 
 These hooks are easy to understand and even easier to use.
 
+Map ka under map to get data 
+
+<div>
+    {roles.map((item)=>(<><h1>{item.name}</h1>
+    
+    {item.permission.map((it)=>(<>
+    <h1>{it.module_name}</h1>
+    </>))}
+    
+    </>))}
+</div>
+
+
+Interfase is use for type defining 
+
